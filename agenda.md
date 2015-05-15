@@ -8,8 +8,6 @@ subtitle: Übersichtlich und nachvollziehbar Testen für alle!
 
 [Home](index.html)
 
-# Topic 1
-
-# Topic 2
-
-# Fazit
+* Topic 1
+* Topic 2
+* Fazit
