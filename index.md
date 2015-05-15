@@ -6,6 +6,7 @@ subtitle: Übersichtlich und nachvollziehbar Testen für alle!
 
 ## Ein Vortrag von Tobias Kraft und Ralf Müller
 
-* [Agenda](agenda.html)
+* [Vortrag](vortrag.html)
+* [Speaker](speaker.html)
 * [Downloads](downloads.html)
 
