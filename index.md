@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Spock und Geb: Uebersichtlich und nachvollziehbar Testen fuer alle!
-subtitle: 
+title: Spock und Geb - Übersichtlich und nachvollziehbar Testen für alle!
+subtitle: Ein Vortrag von Tobias Kraft und Ralf Müller
 ---
 
-## Ein Vortrag von Tobias Kraft und Ralf Mueller
 
 * [Agenda](agenda.html)
 * [Downloads](downloads.html)
