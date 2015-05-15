@@ -1,8 +1,10 @@
 ---
 layout: default
-title: Agenda
-subtitle: 
+title: Spock und Geb
+subtitle: Übersichtlich und nachvollziehbar Testen für alle!
 ---
+
+## Agenda
 
 [Home](index.html)
 
