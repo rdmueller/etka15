@@ -1,0 +1,122 @@
+// Sample Spock/Geb Tests implemented with Gradle
+// uses the chrome driver to showcase Geb
+// uses Spock-Reports to generate AsciiDoc output and renders it as HTML
+
+import org.apache.tools.ant.taskdefs.condition.Os
+import groovy.json.JsonOutput
+
+ext {
+    // The drivers we want to use
+    drivers = ["firefox", "chrome", "phantomJs"]
+
+    ext {
+        groovyVersion = '2.4.1'
+        gebVersion = '0.10.0'
+        seleniumVersion = '2.43.1'
+        chromeDriverVersion = '2.10'
+        phantomJsVersion = '1.9.7'
+    }
+}
+
+defaultTasks 'clean', 'test', 'convertJsonReport', 'asciidoc'
+
+apply plugin: "groovy"
+description = "Spock Framework - Example Project"
+
+// Spock works with Java 1.5 and above
+sourceCompatibility = 1.5
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+        classpath 'com.lookout:jruby-gradle-plugin:2.0.+'
+    }
+}
+task printProps << {
+ //   println commandLineProjectProp
+    println System.properties
+}
+repositories {
+  // Spock releases are available from Maven Central
+  mavenCentral()
+  // Spock snapshots are available from the Sonatype OSS snapshot repository
+  maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+
+  //for spock-reports
+  jcenter()
+}
+
+configurations {
+    testCompile.transitive = true
+}
+
+dependencies {
+    // mandatory dependencies for using Spock
+    compile "org.codehaus.groovy:groovy-all:2.4.1"
+    testCompile "org.codehaus.groovy:groovy-all:2.4.1"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+
+    // optional dependencies for using Spock
+    testCompile "org.hamcrest:hamcrest-core:1.3" // only necessary if Hamcrest matchers are used
+    testRuntime "cglib:cglib-nodep:3.1"          // allows mocking of classes (in addition to interfaces)
+    testRuntime "org.objenesis:objenesis:2.1"    // allows mocking of classes without default constructor (together with CGLIB)
+
+    //for spock-reports
+    testCompile 'com.athaydes:spock-reports:1.2.5'
+
+    //for geb : http://www.gebish.org/manual/current/build-integrations.html
+    def gebVersion = "0.10.0"
+    def seleniumVersion = "2.43.1"
+
+    // If using Spock, need to depend on geb-spock
+    testCompile "org.gebish:geb-spock:0.10.0"
+    testCompile "org.spockframework:spock-core:0.7-groovy-1.8"
+
+    // If using JUnit, need to depend on geb-junit (3 or 4)
+    testCompile "org.gebish:geb-junit4:0.10.0"
+    testCompile "junit:junit-dep:4.8.2"
+
+    testRuntime "org.seleniumhq.selenium:selenium-support:2.43.1"
+
+    // Drivers
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testCompile("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
+        // phantomjs driver pulls in a different selenium version
+        transitive = false
+    }
+
+}
+
+apply plugin: 'org.asciidoctor.gradle.asciidoctor'
+apply from: "gradle/osSpecificDownloads.gradle"
+apply from: "gradle/filmStrip.gradle"
+
+test {
+    dependsOn unzipChromeDriver
+
+    def chromedriverFilename = "chromedriver.exe"
+    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
+    ignoreFailures = true
+    systemProperties "geb.build.reportsDir": "$reportsDir/geb"
+    systemProperties "java.util.logging.config.file": "c:/Users/ralfd_000/logger.properties"
+    outputs.upToDateWhen { false }  // Always run tests
+    systemProperty "geb.env", "chrome"
+}
+
+asciidoctor {
+    outputs.upToDateWhen { false }  // Always run 
+    outputDir = file("$buildDir/docs")
+    println file("$buildDir/docs")
+    sourceDir = file("$buildDir/spock-reports-ad")
+    sourceDocumentName = file("$buildDir/spock-reports-ad/summary.ad")
+    println sourceDocumentName
+    options = [
+            attributes: [
+                    toc : 'left'
+            ]
+    ]
+    logDocuments = true
+}

@@ -1,0 +1,81 @@
+<%
+def fmt = new com.athaydes.spockframework.report.internal.StringFormatHelper()
+def stats = com.athaydes.spockframework.report.util.Utils.stats( data )
+//def slurper = new groovy.json.JsonSlurper()
+def gebReport = (new groovy.json.JsonSlurper()).parseText(new File('./build/reports/geb/gebReportInfo2.json').text)
+%>
+
+== Report for ${data.info.description.className}
+
+<% gebTestResults = gebReport.specs.find {it?.label==data.info.description.className}?.tests %>
+
+=== Summary
+
+[options="header",cols="asciidoc,asciidoc"]
+|====
+|Total Runs        |Success Rate 													 |Total time												|Failures					 |Errors					|Skipped
+|${stats.totalRuns}|${fmt.toPercentage(stats.successRate)} |${fmt.toTimeDuration(stats.time)} |${stats.failures} |${stats.errors} |${stats.skipped}
+|====
+
+=== Features
+<%
+    features.forEach { name, result, blocks, iterations, params ->
+%>
+==== $name
+
+<% def gebArtefacts = gebTestResults?.find {it?.label==name;out << ""+it?.label+" == "+name+"\n"}?.reports %>
+
+Result: **$result** [big]#<% if (result=="PASS") { %>icon:check-circle-o[role="green"]<% } else { %>icon:exclamation-triangle[role="red"]<% } %>#
+<%
+        for ( block in blocks ) {
+ %>
+* **${block.kind}** ${block.text}
+<%
+        }
+        def executedIterations = iterations.findAll { it.dataValues || it.errors }
+        if ( params && executedIterations && executedIterations.size() > 1 ) {
+ %>
+[options="header"]
+|====
+| ${params.join( ' | ' )} | Result
+<%
+            for ( iteration in executedIterations ) {
+
+%>| ${iteration.dataValues.join( ' | ' )} | ${iteration.errors ? 'icon:exclamation-triangle[role="red"]FAIL' : 'icon:check-circle-o[role="green"]PASS'}
+<%          } 
+%>|====
+<%      }
+if (gebArtefacts) {
+%>
+[cols="a,a,a"]
+|====
+<%
+    gebArtefacts.each {
+     def imageUrl = "../../reports/geb/"+it.files.find{it.endsWith('png')}
+     imageUrl = imageUrl.replaceAll(' ','%20')
+%>| image::${imageUrl}[caption="${it.label}", width="95%", link="${imageUrl}"]
+<%    }
+%>|====
+<%
+}
+        def problems = executedIterations.findAll { it.errors }
+        if ( problems ) {
+            out << """
+[WARNING]
+.The following problems occurred:
+====
+"""
+            for ( badIteration in problems ) {
+                if ( badIteration.dataValues ) {
+                    out << '* ' << badIteration.dataValues << '\n'
+                }
+                for ( error in badIteration.errors ) {
+                    out << '----\n' << error << '\n----\n'
+                }
+            }
+            out << """
+====
+"""
+        }
+    }
+ %>

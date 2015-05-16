@@ -1,0 +1,9 @@
+
+[options="header",cols="asciidoc,asciidoc"]
+|====
+| test | test
+
+|[large]#icon:exclamation-triangle[role="red"]# | * test
+* test
+
+|====

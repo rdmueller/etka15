@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Created>2006-09-16T00:00:00Z</Created>
+  <LastSaved>2015-05-14T20:13:32Z</LastSaved>
+  <Version>15.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+  <RemovePersonalInformation/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>8340</WindowHeight>
+  <WindowWidth>20490</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s71" ss:Name="Link">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#0563C1"
+    ss:Underline="Single"/>
+  </Style>
+  <Style ss:ID="s62">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#FFFFFF"
+    ss:Bold="1"/>
+   <Interior ss:Color="#4F6228" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#FFFFFF"
+    ss:Bold="1"/>
+   <Interior ss:Color="#C4D79B" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s66">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s67">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s101">
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#A9D08E" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s102">
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#A9D08E" ss:Pattern="Solid"/>
+  </Style>
+ </Styles>
+ <Names>
+  <NamedRange ss:Name="Block" ss:RefersTo="=Konfiguration!R1C1:R5C1"/>
+  <NamedRange ss:Name="Seiten" ss:RefersTo="=Seiten!R2C1:R60C1"/>
+  <NamedRange ss:Name="Template" ss:RefersTo="=Konfiguration!R8C1"/>
+ </Names>
+ <Worksheet ss:Name="EntwicklertagSpec">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="13" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="60" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="96"/>
+   <Column ss:Width="57"/>
+   <Column ss:Width="230.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="108" ss:Span="1"/>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="210"/>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Feature</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Block</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Beschreibung</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">erwartete Antwort</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Screenshot</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Kommentar</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Aufruf der Vortragsbeschreibung</Data></Cell>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Gegeben:</Data></Cell>
+    <Cell><Data ss:Type="String">Interessent befindet sich auf der Startseite</Data></Cell>
+    <Cell><Data ss:Type="String">Startseite</Data></Cell>
+    <Cell><Data ss:Type="String">Startseite</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Wenn</Data></Cell>
+    <Cell><Data ss:Type="String">der Benutzer auf &quot;Vortrag&quot; klickt,</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract des Vortrags</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">dann</Data></Cell>
+    <Cell><Data ss:Type="String">sieht er den ersten Konferenztag</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Ansicht der Referenten</Data></Cell>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Gegeben:</Data></Cell>
+    <Cell><Data ss:Type="String">Interessent befindet sich auf der Startseite</Data></Cell>
+    <Cell><Data ss:Type="String">Startseite</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Wenn</Data></Cell>
+    <Cell><Data ss:Type="String">der Benutzer auf &quot;Speaker&quot; klickt,</Data></Cell>
+    <Cell><Data ss:Type="String">Referenten</Data></Cell>
+    <Cell><Data ss:Type="String">Liste Referenten</Data></Cell>
+    <Cell><Data ss:Type="String">test</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">dann</Data></Cell>
+    <Cell><Data ss:Type="String">sieht er die Beschreibung der 2 Referenten</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">auf 2 Beschreibungen prüfen!</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Zurück-Link</Data></Cell>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+    <Cell ss:StyleID="s102"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Gegeben:</Data></Cell>
+    <Cell><Data ss:Type="String">Interessent befindet sich auf der Vortrags-Seite</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">und</Data></Cell>
+    <Cell><Data ss:Type="String">der Benutzer auf &quot;Home&quot; klickt,</Data></Cell>
+    <Cell><Data ss:Type="String">Startseite</Data></Cell>
+    <Cell><Data ss:Type="String">Startseite</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">dann</Data></Cell>
+    <Cell><Data ss:Type="String">befindet er sich wieder auf der Startseite</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-3</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>5</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R97C5:R303C5,R2C4:R303C4</Range>
+   <Type>List</Type>
+   <Value>Seiten</Value>
+  </DataValidation>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R3C2:R257C2</Range>
+   <Type>List</Type>
+   <Value>Block</Value>
+  </DataValidation>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R301C1</Range>
+   <Condition>
+    <Value1>RC1&lt;&gt;&quot;&quot;</Value1>
+    <Format Style='font-weight:700;background:#C4D79B'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R301C6</Range>
+   <Condition>
+    <Value1>RC1&lt;&gt;&quot;&quot;</Value1>
+    <Format Style='border-top:.5pt solid windowtext;border-right:none;
+     border-bottom:none;border-left:none;background:#9BBB59'/>
+   </Condition>
+  </ConditionalFormatting>
+ </Worksheet>
+ <Worksheet ss:Name="Seiten">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="60" ss:DefaultRowHeight="15">
+   <Column ss:Width="104.25"/>
+   <Column ss:Width="258"/>
+   <Column ss:Width="98.25"/>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">fachlicher Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">URL</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">technischer Name</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Startseite</Data><NamedCell ss:Name="Seiten"/></Cell>
+    <Cell ss:StyleID="s71" ss:HRef="http://rdmueller.github.io/etka15"><Data
+      ss:Type="String">http://rdmueller.github.io/etka15</Data></Cell>
+    <Cell><Data ss:Type="String">StartPage</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Abstract</Data><NamedCell ss:Name="Seiten"/></Cell>
+    <Cell ss:StyleID="s71" ss:HRef="http://rdmueller.github.io/etka15/vortrag.html"><Data
+      ss:Type="String">http://rdmueller.github.io/etka15/vortrag.html</Data></Cell>
+    <Cell><Data ss:Type="String">AbstractPage</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Referenten</Data><NamedCell ss:Name="Seiten"/></Cell>
+    <Cell ss:StyleID="s71" ss:HRef="http://rdmueller.github.io/etka15/speaker.html"><Data
+      ss:Type="String">http://rdmueller.github.io/etka15/speaker.html</Data></Cell>
+    <Cell><Data ss:Type="String">SpeakerPage</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Downloads</Data><NamedCell ss:Name="Seiten"/></Cell>
+    <Cell ss:StyleID="s71" ss:HRef="http://rdmueller.github.io/etka15/downloads.html"><Data
+      ss:Type="String">http://rdmueller.github.io/etka15/downloads.html</Data></Cell>
+    <Cell><Data ss:Type="String">DownloadsPage</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.78740157499999996" x:Left="0.7" x:Right="0.7"
+     x:Top="0.78740157499999996"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Konfiguration">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="60" ss:DefaultRowHeight="15">
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Gegeben:</Data><Comment
+      ss:Author="Autor"><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><B><Font
+         html:Face="Segoe UI" x:Family="Swiss" html:Size="9" html:Color="#000000">Block</Font></B></ss:Data></Comment><NamedCell
+      ss:Name="Block"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Wenn</Data><NamedCell
+      ss:Name="Block"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">dann</Data><NamedCell
+      ss:Name="Block"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">und</Data><NamedCell
+      ss:Name="Block"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">wobei</Data><NamedCell
+      ss:Name="Block"/></Cell>
+   </Row>
+   <Row ss:Index="7" ss:AutoFitHeight="0"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><NamedCell ss:Name="Template"/></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.78740157499999996" x:Left="0.7" x:Right="0.7"
+     x:Top="0.78740157499999996"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>
