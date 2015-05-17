@@ -14,6 +14,7 @@ subtitle: Übersichtlich und nachvollziehbar Testen für alle!
 
 * [Spock](https://github.com/spockframework/spock)
 * [Geb](http://www.gebish.org/)
+* [Artikel zum Thema Spock & Geb](http://www.exensio.de/articles/)
 * [Spock-Reports](https://github.com/renatoathaydes/spock-reports)
 * [asciidoc template](https://github.com/renatoathaydes/spock-reports/wiki)
 * [Grails Film-Strip Plugin](https://grails.org/plugin/film-strip)
