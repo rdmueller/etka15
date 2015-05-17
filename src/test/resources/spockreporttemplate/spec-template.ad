@@ -42,9 +42,10 @@ try {
 
 Result: **$result** [big]#<% if (result=="PASS") { %>icon:check-circle-o[role="green"]<% } else { %>icon:exclamation-triangle[role="red"]<% } %>#
 <%
+def translations = ['Given:':'Gegeben:','When:':'Wenn','And:':'und','Then:':'dann']
         for ( block in blocks ) {
  %>
-* **${block.kind}** ${block.text}
+* **${translations[block.kind]?:block.kind}** ${block.text}
 <%
         }
         def executedIterations = iterations.findAll { it.dataValues || it.errors }
