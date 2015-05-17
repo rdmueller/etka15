@@ -8,8 +8,7 @@ subtitle: Übersichtlich und nachvollziehbar Testen für alle!
 
 [Home](index.html)
 
-* Spec Template
-* xml2spec.groovy
+* [Excel2Spec](https://github.com/rdmueller/Excel2Spec)
 
 ## weitere Ressourcen
 
