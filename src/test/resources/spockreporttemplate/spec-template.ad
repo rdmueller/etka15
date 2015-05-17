@@ -1,14 +1,29 @@
 <%
-def fmt = new com.athaydes.spockframework.report.internal.StringFormatHelper()
-def stats = com.athaydes.spockframework.report.util.Utils.stats( data )
-//def slurper = new groovy.json.JsonSlurper()
-def gebReport = (new groovy.json.JsonSlurper()).parseText(new File('./build/reports/geb/gebReportInfo2.json').text)
+System.out.println "entering spec-template"
+def fmt, stats, gebReport
+//we need the JsonReport converted before the template is executed
+//since Spock-Reports first executes the spec-templates, we
+//have to transform the JsonReport in here...
+if (!new File('./build/reports/geb/gebReportInfo2.json').exists()) {
+	println "transfrom gebReport"
+	grails.plugin.filmstrip.ReportConverter.convertJsonReport()
+}
+fmt = new com.athaydes.spockframework.report.internal.StringFormatHelper()
+stats = com.athaydes.spockframework.report.util.Utils.stats( data )
+gebReport = (new groovy.json.JsonSlurper()).parseText(new File('./build/reports/geb/gebReportInfo2.json').text)
+println "parsed gebReport"
 %>
+== Report for ${data?.info?.description?.className}
 
-== Report for ${data.info.description.className}
-
-<% gebTestResults = gebReport.specs.find {it?.label==data.info.description.className}?.tests %>
-
+<% 
+def gebTestResults
+try {
+	gebTestResults = gebReport.specs.find {it?.label==data.info.description.className}?.tests 
+} catch (Exception e) {
+	System.out.println e
+}
+%>
+<% println gebTestResults.join("\n") %>
 === Summary
 
 [options="header",cols="asciidoc,asciidoc"]
@@ -23,7 +38,7 @@ def gebReport = (new groovy.json.JsonSlurper()).parseText(new File('./build/repo
 %>
 ==== $name
 
-<% def gebArtefacts = gebTestResults?.find {it?.label==name;out << ""+it?.label+" == "+name+"\n"}?.reports %>
+<% def gebArtefacts = gebTestResults?.find {it?.label==name}?.reports %>
 
 Result: **$result** [big]#<% if (result=="PASS") { %>icon:check-circle-o[role="green"]<% } else { %>icon:exclamation-triangle[role="red"]<% } %>#
 <%
@@ -35,6 +50,7 @@ Result: **$result** [big]#<% if (result=="PASS") { %>icon:check-circle-o[role="g
         def executedIterations = iterations.findAll { it.dataValues || it.errors }
         if ( params && executedIterations && executedIterations.size() > 1 ) {
  %>
+
 [options="header"]
 |====
 | ${params.join( ' | ' )} | Result
@@ -50,12 +66,33 @@ if (gebArtefacts) {
 [cols="a,a,a"]
 |====
 <%
+println name
+println gebArtefacts.join("\n")
+def numCols = 0
     gebArtefacts.each {
      def imageUrl = "../../reports/geb/"+it.files.find{it.endsWith('png')}
      imageUrl = imageUrl.replaceAll(' ','%20')
+     //omit auto-generated end-screenshots
+     println imageUrl
+     println ""+!(imageUrl.endsWith('-end.png'))
+     if (!(imageUrl.endsWith('-end.png'))) {
+     	numCols++
 %>| image::${imageUrl}[caption="${it.label}", width="95%", link="${imageUrl}"]
-<%    }
+<%
+     }
+     //every three image, create a new row
+     if (numCols%3==0) {
+%>
+<%
+     }
+    }
+    //fill remaining columns with empty elements
+    (numCols%3).times {
+%>|
+<%
+    }
 %>|====
+
 <%
 }
         def problems = executedIterations.findAll { it.errors }

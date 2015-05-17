@@ -1,5 +1,5 @@
 <%
-grails.plugin.filmstrip.ReportConverter.convertJsonReport()
+println "entering summary-template"
 %>= Spock Test Results
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Table of Contents

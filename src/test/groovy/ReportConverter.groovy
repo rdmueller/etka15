@@ -28,6 +28,7 @@ class ReportConverter {
                 }
                 def test = spec.tests.find { test -> test.num==reportLine.spec.test.num }
                 if (!(reportLine.spec.test.report.num in test.reports.num)) {
+                    //create a new element in reports list
                     test.reports << [
                             time:reportLine.spec.test.report.time,
                             num:reportLine.spec.test.report.num,
@@ -35,9 +36,7 @@ class ReportConverter {
                             url:reportLine.spec.test.report.url,
                             files:[]
                     ]
-                    println "**** new report"
                 } else {
-                    println "**** old report"
                 }
                 def report = test.reports.find { report -> report.num==reportLine.spec.test.report.num }
                 if (!(reportLine.spec.test.report.files in report.files)) {

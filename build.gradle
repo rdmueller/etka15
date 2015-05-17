@@ -101,7 +101,6 @@ test {
     systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
     ignoreFailures = true
     systemProperties "geb.build.reportsDir": "$reportsDir/geb"
-    systemProperties "java.util.logging.config.file": "c:/Users/ralfd_000/logger.properties"
     outputs.upToDateWhen { false }  // Always run tests
     systemProperty "geb.env", "chrome"
 }

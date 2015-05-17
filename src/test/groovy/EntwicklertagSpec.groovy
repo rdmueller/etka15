@@ -29,7 +29,7 @@ class EntwicklertagSpec extends GebReportingSpec {
             //TODO: implement test step
     }
 
-    def 'Zurück-Link'() {
+    def 'Zurueck-Link'() {
         given:  "Interessent befindet sich auf der Vortrags-Seite"
             at AbstractPage
             //TODO: implement test step
