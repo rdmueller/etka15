@@ -10,3 +10,4 @@ subtitle: Übersichtlich und nachvollziehbar Testen für alle!
 * [Speaker](speaker.html)
 * [Downloads](downloads.html)
 
+* [Beispiel-Report](report/docs/html5/summary.html)

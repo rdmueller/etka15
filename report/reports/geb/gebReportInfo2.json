@@ -1,0 +1,97 @@
+{
+    "specs": [
+        {
+            "label": "EntwicklertagSpec",
+            "tests": [
+                {
+                    "num": "001",
+                    "label": "Aufruf der Vortragsbeschreibung",
+                    "reports": [
+                        {
+                            "time": 1431889242612,
+                            "num": "001",
+                            "label": "Startseite",
+                            "url": "http://rdmueller.github.io/etka15/",
+                            "files": [
+                                "./EntwicklertagSpec/001-001-Aufruf der Vortragsbeschreibung-Startseite.html",
+                                "./EntwicklertagSpec/001-001-Aufruf der Vortragsbeschreibung-Startseite.png"
+                            ]
+                        },
+                        {
+                            "time": 1431889243732,
+                            "num": "002",
+                            "label": "Abstract des Vortrags",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./EntwicklertagSpec/001-002-Aufruf der Vortragsbeschreibung-Abstract des Vortrags.html",
+                                "./EntwicklertagSpec/001-002-Aufruf der Vortragsbeschreibung-Abstract des Vortrags.png"
+                            ]
+                        },
+                        {
+                            "time": 1431889244188,
+                            "num": "003",
+                            "label": "end",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./EntwicklertagSpec/001-003-Aufruf der Vortragsbeschreibung-end.html",
+                                "./EntwicklertagSpec/001-003-Aufruf der Vortragsbeschreibung-end.png"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "num": "002",
+                    "label": "Ansicht der Referenten",
+                    "reports": [
+                        {
+                            "time": 1431889244652,
+                            "num": "001",
+                            "label": "Liste Referenten",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./EntwicklertagSpec/002-001-Ansicht der Referenten-Liste Referenten.html",
+                                "./EntwicklertagSpec/002-001-Ansicht der Referenten-Liste Referenten.png"
+                            ]
+                        },
+                        {
+                            "time": 1431889244979,
+                            "num": "002",
+                            "label": "end",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./EntwicklertagSpec/002-002-Ansicht der Referenten-end.html",
+                                "./EntwicklertagSpec/002-002-Ansicht der Referenten-end.png"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "num": "003",
+                    "label": "Zurueck",
+                    "reports": [
+                        {
+                            "time": 1431889245397,
+                            "num": "001",
+                            "label": "Link",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./EntwicklertagSpec/003-001-Zurueck-Link-Startseite.html",
+                                "./EntwicklertagSpec/003-001-Zurueck-Link-Startseite.png"
+                            ]
+                        },
+                        {
+                            "time": 1431889245751,
+                            "num": "002",
+                            "label": "Link",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./EntwicklertagSpec/003-002-Zurueck-Link-end.html",
+                                "./EntwicklertagSpec/003-002-Zurueck-Link-end.png"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
