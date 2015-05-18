@@ -10,34 +10,32 @@ class EntwicklertagSpec extends GebReportingSpec {
             to StartPage
             report 'Startseite'
         when:   "der Benutzer auf 'Vortrag' klickt,"
-        		vortragLink.click()
-            at AbstractPage
+            vortragLink.click()
             report 'Abstract des Vortrags'
+            at AbstractPage
         then:   "sieht er die Zusammenfassung des Vortrags"
             headline ==~ /Vortrag/
     }
 
     def 'Ansicht der Referenten'() {
         given:  "Interessent befindet sich auf der Startseite"
-            at StartPage
-            //TODO: implement test step
+            to StartPage
         when:   "der Benutzer auf 'Speaker' klickt,"	//test
-            at SpeakerPage
+            speakerLink.click()
             report 'Liste Referenten'
-            //TODO: implement test step
+            at SpeakerPage
         then:   "sieht er die Beschreibung der 2 Referenten"	//auf 2 Beschreibungen prüfen!
-            //TODO: implement test step
+            $('section#main_content h3').size() == 2
     }
 
-    def 'Zurueck-Link'() {
+    def 'Zurueck Link'() {
         given:  "Interessent befindet sich auf der Vortrags-Seite"
-            at AbstractPage
-            //TODO: implement test step
+            to AbstractPage
+            report 'Zusammenfassung des Vortrags'
         when:    "der Benutzer auf 'Home' klickt,"
-            at StartPage
-            report 'Startseite'
-            //TODO: implement test step
+            homeLink.click()
         then:   "befindet er sich wieder auf der Startseite"
-            //TODO: implement test step
+            report 'Startseite'
+            at StartPage
     }
 }

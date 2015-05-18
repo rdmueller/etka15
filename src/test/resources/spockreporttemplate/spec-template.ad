@@ -1,11 +1,10 @@
 <%
-System.out.println "entering spec-template"
+println "entering spec-template"
 def fmt, stats, gebReport
 //we need the JsonReport converted before the template is executed
 //since Spock-Reports first executes the spec-templates, we
 //have to transform the JsonReport in here...
 if (!new File('./build/reports/geb/gebReportInfo2.json').exists()) {
-	println "transfrom gebReport"
 	grails.plugin.filmstrip.ReportConverter.convertJsonReport()
 }
 fmt = new com.athaydes.spockframework.report.internal.StringFormatHelper()
@@ -17,11 +16,7 @@ println "parsed gebReport"
 
 <% 
 def gebTestResults
-try {
-	gebTestResults = gebReport.specs.find {it?.label==data.info.description.className}?.tests 
-} catch (Exception e) {
-	System.out.println e
-}
+gebTestResults = gebReport.specs.find {it?.label==data.info.description.className}?.tests
 %>
 <% println gebTestResults.join("\n") %>
 === Summary
@@ -67,18 +62,17 @@ if (gebArtefacts) {
 [cols="a,a,a"]
 |====
 <%
-println name
-println gebArtefacts.join("\n")
 def numCols = 0
     gebArtefacts.each {
      def imageUrl = "../../reports/geb/"+it.files.find{it.endsWith('png')}
+     def pageUrl = "../../reports/geb/"+it.files.find{it.endsWith('html')}
      imageUrl = imageUrl.replaceAll(' ','%20')
+     pageUrl  =  pageUrl.replaceAll(' ','%20')
      //omit auto-generated end-screenshots
-     println imageUrl
-     println ""+!(imageUrl.endsWith('-end.png'))
      if (!(imageUrl.endsWith('-end.png'))) {
      	numCols++
-%>| image::${imageUrl}[caption="${it.label}", width="95%", link="${imageUrl}"]
+%>| image::${imageUrl}[width="95%", link="${imageUrl}"]
+${it.label} link:${pageUrl}[.]
 <%
      }
      //every three image, create a new row
@@ -88,7 +82,7 @@ def numCols = 0
      }
     }
     //fill remaining columns with empty elements
-    (numCols%3).times {
+    (3-numCols%3).times {
 %>|
 <%
     }
