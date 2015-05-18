@@ -13,3 +13,4 @@ Unter https://github.com/rdmueller/etka15/tree/master/src/test/groovy findet man
 - EntwicklertagSpec.groovy : das generierte und von einem Entwickler ausgefüllte Testgerüst
 - pages/. : die generierten und von einem Entwickler verfeinerten Seitendefinitionen
 
+Das Gradle-Projekt erzeugt den finalen HTML-Report in [build/report/docs/html5/summary.html](http://rdmueller.github.io/etka15/report/docs/html5/summary.html)
