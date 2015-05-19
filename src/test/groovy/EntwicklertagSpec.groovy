@@ -25,7 +25,8 @@ class EntwicklertagSpec extends GebReportingSpec {
             report 'Liste Referenten'
             at SpeakerPage
         then:   "sieht er die Beschreibung der 2 Referenten"	//auf 2 Beschreibungen prüfen!
-            $('section#main_content h3').size() == 2
+            headlines.size() == 2
+            headlines[1].text() == "Ralf Müller"
     }
 
     def 'Zurueck Link'() {
