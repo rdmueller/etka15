@@ -20,6 +20,7 @@ def blockTranslation = [
                         'wenn'       : 'when:   ',
                         'und'        : 'and:    ',
                         'dann'       : 'then:   ',
+                        'erwartet'   : 'expect: ',
                         'wobei'      : 'where:  ',
                        ]
 
@@ -73,6 +74,7 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
                 code += "${withinFeature++?"    }\n\n":''}    def '${featureName.replaceAll("'",'\'')}'() {\n"
             } else {
                 block = block?.toLowerCase()?.replaceAll("[^a-z]","")
+
                 block = blockTranslation[block]?:block
                 def matcher = description =~ /^"(.*)"$/
                 if (matcher) {
@@ -80,12 +82,16 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
                 }
                 
                 code += "        ${block}\"${description?.replaceAll('"',"'")}\"${comment?.trim()?"\t//$comment":""}\n"
-                if (response) {
-                    code += "            at $response\n"
-                    pages << response
-                }
                 if (screenshot) {
                     code += "            report '$screenshot'\n"
+                }
+                if (response) {
+                    if (block.startsWith('given')) {
+                        code += "            to $response\n"
+                    } else {
+                        code += "            at $response\n"
+                    }
+                    pages << response
                 }
                 code += "            //TODO: implement test step\n"
             }
