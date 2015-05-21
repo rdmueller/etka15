@@ -21,6 +21,7 @@ ext {
 defaultTasks 'clean', 'test', 'convertJsonReport', 'asciidoc'
 
 apply plugin: "groovy"
+apply plugin: "idea"
 description = "Spock Framework - Example Project"
 
 // Spock works with Java 1.5 and above
