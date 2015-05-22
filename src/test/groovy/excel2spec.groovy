@@ -40,7 +40,8 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
                 def code = """\
                             package pages
                             import geb.Page
-                            
+                            import spock.lang.Ignore
+
                             class $technical    extends Page {
                                 
                                 static    url = "$url"
@@ -71,7 +72,7 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
             worksheet.Table.Row[1..-1].each { row ->
                 def (featureName,block,description,response,screenshot,comment) = rowToList(row)
             if (featureName) {
-                code += "${withinFeature++?"    }\n\n":''}    def '${featureName.replaceAll("'",'\'')}'() {\n"
+                code += "${withinFeature++?"    }\n\n":''}    @Ignore(reason = \"not implemented\")\ndef '${featureName.replaceAll("'",'\'')}'() {\n"
             } else {
                 block = block?.toLowerCase()?.replaceAll("[^a-z]","")
 

@@ -2,6 +2,7 @@ import geb.spock.GebReportingSpec
 import pages.StartPage
 import pages.AbstractPage
 import pages.SpeakerPage
+import spock.lang.Ignore
 
 class EntwicklertagSpec extends GebReportingSpec {
 
@@ -38,5 +39,11 @@ class EntwicklertagSpec extends GebReportingSpec {
         then:   "befindet er sich wieder auf der Startseite"
             report 'Startseite'
             at StartPage
+    }
+
+    @Ignore("Not yet implemented")
+    def 'irgendwas anderes'() {
+        expect: "sdf"
+            5 == 5
     }
 }
