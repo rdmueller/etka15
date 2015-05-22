@@ -7,27 +7,38 @@ import spock.lang.Ignore
 class EntwicklertagSpec extends GebReportingSpec {
 
     def 'Aufruf der Vortragsbeschreibung'() {
-        given:  "Interessent befindet sich auf der Startseite"
+        given: "Besucher befindet sich auf der Startseite"
             to StartPage
             report 'Startseite'
-        when:   "der Benutzer auf 'Vortrag' klickt,"
-            vortragLink.click()
+        when: "der Benutzer auf 'Vortrag' klickt,"
+            talkLink.click()
+        then: "sieht er die Zusammenfassung des Vortrags"
             report 'Abstract des Vortrags'
             at AbstractPage
-        then:   "sieht er die Zusammenfassung des Vortrags"
+            report 'Abstract des Vortrags'
             headline ==~ /Vortrag/
+
     }
 
     def 'Ansicht der Referenten'() {
-        given:  "Interessent befindet sich auf der Startseite"
+        given: "Besucher befindet sich auf der Startseite"
             to StartPage
-        when:   "der Benutzer auf 'Speaker' klickt,"	//test
+
+        when: "der Benutzer auf 'Speaker' klickt,"
             speakerLink.click()
+
+        then: "sieht er die Referenten des Vortrags"
             report 'Liste Referenten'
             at SpeakerPage
-        then:   "sieht er die Beschreibung der 2 Referenten"	//auf 2 Beschreibungen prüfen!
-            headlines.size() == 2
-            headlines[1].text() == "Ralf Müller"
+            speakerName(1) == 'Ralf D. Müller'
+            mainContent.find('h3').size() == 2
+
+        when: "der Benutzer auf 'Home' klickt,"
+            homeLink.click()
+
+        then: "befindet er sich wieder auf der Startseite"
+            report 'Startseite'
+            at StartPage
     }
 
     def 'Zurueck Link'() {
