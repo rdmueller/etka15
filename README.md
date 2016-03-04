@@ -2,7 +2,7 @@
 
 ## Übersichtlich und nachvollziehbar Testen für alle!
 
-Code zur Präsentation auf dem karlsruher Entwicklertag 2015
+Code zur Präsentation "Übersichtlich und nachvollziehbar Testen für alle!"
 
 Dieses Repository soll nochmal die in der Präsentation dargestellten Methoden und Vorgehensweisen anhand eines Gradle-Builds und einer trivialen Website (http://rdmueller.github.io/etka15/) verdeutlichen.
 

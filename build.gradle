@@ -5,16 +5,17 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 import groovy.json.JsonOutput
 
+
 ext {
     // The drivers we want to use
     drivers = ["firefox", "chrome", "phantomJs"]
 
     ext {
-        groovyVersion = '2.4.1'
-        gebVersion = '0.10.0'
-        seleniumVersion = '2.43.1'
-        chromeDriverVersion = '2.10'
-        phantomJsVersion = '1.9.7'
+        groovyVersion = "2.4.6"
+        gebVersion = "0.13.1"
+        seleniumVersion = "2.43.1"
+        chromeDriverVersion = '2.21'
+        phantomJsVersion = '2.1.1'
     }
 }
 
@@ -55,8 +56,8 @@ configurations {
 
 dependencies {
     // mandatory dependencies for using Spock
-    compile "org.codehaus.groovy:groovy-all:2.4.1"
-    testCompile "org.codehaus.groovy:groovy-all:2.4.1"
+    compile "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 
     // optional dependencies for using Spock
@@ -65,11 +66,8 @@ dependencies {
     testRuntime "org.objenesis:objenesis:2.1"    // allows mocking of classes without default constructor (together with CGLIB)
 
     //for spock-reports
-    testCompile 'com.athaydes:spock-reports:1.2.5'
+    testCompile 'com.athaydes:spock-reports:1.2.8'
 
-    //for geb : http://www.gebish.org/manual/current/build-integrations.html
-    def gebVersion = "0.10.0"
-    def seleniumVersion = "2.43.1"
 
     // If using Spock, need to depend on geb-spock
     testCompile "org.gebish:geb-spock:0.10.0"
@@ -79,7 +77,7 @@ dependencies {
     testCompile "org.gebish:geb-junit4:0.10.0"
     testCompile "junit:junit-dep:4.8.2"
 
-    testRuntime "org.seleniumhq.selenium:selenium-support:2.43.1"
+    testRuntime "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
 
     // Drivers
     testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
