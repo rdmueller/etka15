@@ -18,9 +18,7 @@ println "parsed gebReport"
 def gebTestResults
 gebTestResults = gebReport.specs.find {it?.label==data.info.description.className}?.tests
 %>
-<% println gebTestResults.join("\n") %>
 === Summary
-
 [options="header",cols="asciidoc,asciidoc"]
 |====
 |Total Runs        |Success Rate 													 |Total time												|Failures					 |Errors					|Skipped
@@ -29,7 +27,7 @@ gebTestResults = gebReport.specs.find {it?.label==data.info.description.classNam
 
 === Features
 <%
-    features.forEach { name, result, blocks, iterations, params ->
+    features.eachFeature { name, result, blocks, iterations, params ->
 %>
 ==== $name
 
