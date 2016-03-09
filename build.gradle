@@ -113,12 +113,10 @@ asciidoctor {
     outputDir = file("$buildDir/docs")
     println file("$buildDir/docs")
     sourceDir = file("$buildDir/spock-reports-ad")
-    sourceDocumentName = file("$buildDir/spock-reports-ad/summary.ad")
-    println sourceDocumentName
-    options = [
-            attributes: [
-                    toc : 'left'
-            ]
-    ]
+    sources {
+    	include "summary.ad"
+    }
+    attributes 'toc' : 'left',
+    					 'icons' : 'font'
     logDocuments = true
 }
