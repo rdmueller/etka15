@@ -14,3 +14,11 @@ Unter https://github.com/rdmueller/etka15/tree/master/src/test/groovy findet man
 - pages/. : die generierten und von einem Entwickler verfeinerten Seitendefinitionen
 
 Das Gradle-Projekt erzeugt den finalen HTML-Report in [build/report/docs/html5/summary.html](http://rdmueller.github.io/etka15/report/docs/html5/summary.html)
+
+To run the project, type
+
+`gradle test`
+
+on the commandline. To use UTF-8 encoded characters in your test descriptions, make sure that the file encoding on your system is set to UTF-8 by setting the environment varialbe `GRADLE_OPTS` to `"-Dfile.encoding=UTF-8"`. If you use the powershell on windows, you can do this by executing
+
+`$env:GRADLE_OPTS="-Dfile.encoding=UTF-8"`
