@@ -17,7 +17,7 @@ Das Gradle-Projekt erzeugt den finalen HTML-Report in [build/report/docs/html5/s
 
 To run the project, type
 
-`gradle test`
+`./gradlew`
 
 on the commandline. To use UTF-8 encoded characters in your test descriptions, make sure that the file encoding on your system is set to UTF-8 by setting the environment varialbe `GRADLE_OPTS` to `"-Dfile.encoding=UTF-8"`. If you use the powershell on windows, you can do this by executing
 
