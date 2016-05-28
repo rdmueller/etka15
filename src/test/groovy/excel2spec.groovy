@@ -16,12 +16,20 @@ def rowToList = { row ->
     return list
 }
 def blockTranslation = [
+                        //german
                         'gegeben'    : 'given:  ',
                         'wenn'       : 'when:   ',
                         'und'        : 'and:    ',
                         'dann'       : 'then:   ',
                         'erwartet'   : 'expect: ',
                         'wobei'      : 'where:  ',
+                        //english
+                        'given'      : 'given:  ',
+                        'when'       : 'when:   ',
+                        'and'        : 'and:    ',
+                        'then'       : 'then:   ',
+                        'expect'     : 'expect: ',
+                        'where'      : 'where:  ',
                        ]
 
 //the main loop
@@ -33,7 +41,7 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
     new File('./pages').mkdirs()
     workbook.Worksheet.each { worksheet ->
         def name = worksheet."@ss:Name".text()
-        if (name.endsWith('Seiten')) {
+        if (name.endsWith('Seiten') || name.endsWith('Pages')) {
             worksheet.Table.Row[1..-1].each { row ->
                 def (readable,url,technical) = rowToList(row)
                 pageDefs[readable]=[url:url,name:technical]
@@ -57,22 +65,23 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
             }
         }
     }
-    def withinFeature = 0                       
     workbook.Worksheet.each { worksheet ->
+        def withinFeature = 0
         def name = worksheet."@ss:Name".text()
         if (name.endsWith('Spec')) {
             def pages = []
             def code = """\
                         import geb.spock.GebReportingSpec
+                        import spock.lang.Ignore
                         %pageImports%
                         
-                        class ${file.name-'.xml'} extends GebReportingSpec {
+                        class ${name} extends GebReportingSpec {
                         
                        """.stripIndent()
             worksheet.Table.Row[1..-1].each { row ->
                 def (featureName,block,description,response,screenshot,comment) = rowToList(row)
             if (featureName) {
-                code += "${withinFeature++?"    }\n\n":''}    @Ignore(reason = \"not implemented\")\ndef '${featureName.replaceAll("'",'\'')}'() {\n"
+                code += "${withinFeature++?"    }\n\n":''}    @Ignore(\"not implemented\")\n    def '${featureName.replaceAll("'",'\'')}'() {\n"
             } else {
                 block = block?.toLowerCase()?.replaceAll("[^a-z]","")
 
@@ -83,14 +92,17 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
                 }
                 
                 code += "        ${block}\"${description?.replaceAll('"',"'")}\"${comment?.trim()?"\t//$comment":""}\n"
-                if (screenshot) {
-                    code += "            report '$screenshot'\n"
-                }
                 if (response) {
                     if (block.startsWith('given')) {
-                        code += "            to $response\n"
+                        code += "            to ${pageDefs[response].name}\n"
+                        if (screenshot) {
+                            code += "            report '$screenshot'\n"
+                        }
                     } else {
-                        code += "            at $response\n"
+                        if (screenshot) {
+                            code += "            report '$screenshot'\n"
+                        }
+                        code += "            at ${pageDefs[response].name}\n"
                     }
                     pages << response
                 }
@@ -98,9 +110,10 @@ new File('.').listFiles({file,name-> name ==~ /.*Spec.xml$/} as FilenameFilter).
             }
         }   
         code += "    }\n}\n"
+        pages.unique().each { if (!pageDefs[it]) throw new Exception("can't find page definition for '$it' in spec definition sheet")}
         code = code.replaceAll('(?ms)%pageImports%',pages.unique().collect{"import pages.${pageDefs[it].name}"}.join("\n"))
-        println pages.unique().collect{"import pages.${pageDefs[it].name}"}.join("\n")
-        def targetName = file.name-'.xml'+'.groovy'
+        //println pages.unique().collect{"import pages.${pageDefs[it].name}"}.join("\n")
+        def targetName = name+'.groovy'
         new File (targetName).write(code)
         println "wrote $targetName"
     } 
