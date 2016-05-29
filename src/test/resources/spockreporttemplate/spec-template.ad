@@ -4,9 +4,7 @@ def fmt, stats, gebReport
 //we need the JsonReport converted before the template is executed
 //since Spock-Reports first executes the spec-templates, we
 //have to transform the JsonReport in here...
-if (!new File('./build/reports/geb/gebReportInfo2.json').exists()) {
-	grails.plugin.filmstrip.ReportConverter.convertJsonReport()
-}
+grails.plugin.filmstrip.ReportConverter.convertJsonReport()
 fmt = new com.athaydes.spockframework.report.internal.StringFormatHelper()
 stats = com.athaydes.spockframework.report.util.Utils.stats( data )
 gebReport = (new groovy.json.JsonSlurper()).parseText(new File('./build/reports/geb/gebReportInfo2.json').text)
