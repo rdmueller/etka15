@@ -22,3 +22,5 @@ To run the project, type
 on the commandline. To use UTF-8 encoded characters in your test descriptions, make sure that the file encoding on your system is set to UTF-8 by setting the environment varialbe `GRADLE_OPTS` to `"-Dfile.encoding=UTF-8"`. If you use the powershell on windows, you can do this by executing
 
 `$env:GRADLE_OPTS="-Dfile.encoding=UTF-8"`
+
+The included spock-reports template is available in english and german. Default config is set to german and can be changed in https://github.com/rdmueller/etka15/blob/master/src/test/resources/META-INF/services/com.athaydes.spockframework.report.IReportCreator.properties
