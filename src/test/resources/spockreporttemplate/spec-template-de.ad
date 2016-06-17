@@ -1,0 +1,109 @@
+<%
+println "entering spec-template"
+def fmt, stats, gebReport
+//we need the JsonReport converted before the template is executed
+//since Spock-Reports first executes the spec-templates, we
+//have to transform the JsonReport in here...
+grails.plugin.filmstrip.ReportConverter.convertJsonReport()
+fmt = new com.athaydes.spockframework.report.internal.StringFormatHelper()
+stats = com.athaydes.spockframework.report.util.Utils.stats( data )
+gebReport = (new groovy.json.JsonSlurper()).parseText(new File('./build/reports/geb/gebReportInfo2.json').text)
+println "parsed gebReport"
+%>
+== Bericht für ${data?.info?.description?.className}
+
+<%
+def gebTestResults
+gebTestResults = gebReport.specs.find {it?.label==data.info.description.className}?.tests
+%>
+=== Zusammenfassung
+[options="header",cols="asciidoc,asciidoc"]
+|====
+|Gesamtdurchläufe        |Erfolgsquote 													 |Gesamtzeit												|Fehlschläge					 |Fehler					|Ausgelassen
+|${stats.totalRuns}|${fmt.toPercentage(stats.successRate)} |${fmt.toTimeDuration(stats.time)} |${stats.failures} |${stats.errors} |${stats.skipped}
+|====
+
+=== Features
+<%
+    features.eachFeature { name, result, blocks, iterations, params ->
+%>
+==== $name
+
+<% def gebArtefacts = gebTestResults?.find {it?.label==name}?.reports %>
+
+Resultat: **$result** [big]#<% if (result=="PASS") { %>icon:check-circle-o[role="green"]<% } else { %>icon:exclamation-triangle[role="red"]<% } %>#
+<%
+def translations = ['Given:':'Gegeben:','When:':'Wenn','And:':'und','Then:':'dann']
+        for ( block in blocks ) {
+ %>
+* **${translations[block.kind]?:block.kind}** ${block.text}
+<%
+        }
+        def executedIterations = iterations.findAll { it.dataValues || it.errors }
+        if ( params && executedIterations && executedIterations.size() > 1 ) {
+ %>
+
+[options="header"]
+|====
+| ${params.join( ' | ' )} | Resultat
+<%
+            for ( iteration in executedIterations ) {
+
+%>| ${iteration.dataValues.join( ' | ' )} | ${iteration.errors ? 'icon:exclamation-triangle[role="red"]FAIL' : 'icon:check-circle-o[role="green"]PASS'}
+<%          }
+%>|====
+<%      }
+if (gebArtefacts) {
+%>
+[cols="a,a,a"]
+|====
+<%
+def numCols = 0
+    gebArtefacts.each {
+     def imageUrl = "../../reports/geb/"+it.files.find{it.endsWith('png')}
+     def pageUrl = "../../reports/geb/"+it.files.find{it.endsWith('html')}
+     imageUrl = imageUrl.replaceAll(' ','%20')
+     pageUrl  =  pageUrl.replaceAll(' ','%20')
+     //omit auto-generated end-screenshots
+     if (!(imageUrl.endsWith('-end.png'))) {
+     	numCols++
+%>| image::${imageUrl}[width="95%", link="${imageUrl}"]
+${it.label} link:${pageUrl}[.]
+<%
+     }
+     //every three image, create a new row
+     if (numCols%3==0) {
+%>
+<%
+     }
+    }
+    //fill remaining columns with empty elements
+    (3-numCols%3).times {
+%>|
+<%
+    }
+%>|====
+
+<%
+}
+        def problems = executedIterations.findAll { it.errors }
+        if ( problems ) {
+            out << """
+[WARNING]
+.Die folgenden Probleme traten auf:
+====
+"""
+            for ( badIteration in problems ) {
+                if ( badIteration.dataValues ) {
+                    out << '* ' << badIteration.dataValues << '\n'
+                }
+                for ( error in badIteration.errors ) {
+                    out << '----\n' << error << '\n----\n'
+                }
+            }
+            out << """
+====
+"""
+        }
+    }
+ %>

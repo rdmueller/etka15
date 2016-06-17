@@ -1,0 +1,52 @@
+<%
+println "entering summary-template"
+%>= Spock Test Resultate
+// toc-title definition MUST follow document title without blank line!
+:toc-title: Inhaltsverzeichnis
+:icons: font
+:caution-caption: Achtung
+:important-caption: Wichtig
+:note-caption: Hinweis
+:tip-caption: Tipp
+:warning-caption: Warnung
+:appendix-caption: Anhang
+:example-caption: Beispiel
+:figure-caption: Abbildung
+:table-caption: Tabelle
+
+// numbering from here on
+:numbered:
+
+<% def stats = com.athaydes.spockframework.report.util.Utils.aggregateStats( data )
+ %>== Resultate der Spezifikationen
+
+=== Spezifikationen Zusammenfassung
+
+[small]#erstellt am ${new Date().format("dd.MM.yyyy HH:mm")} von ${System.properties['user.name']}#
+
+.Zusammenfassung
+[options="header"]
+|==================================================================================================================================
+| Gesamt          | Erfolgreich          | Fehlgeschlagen          | Fehlgeschlagene Features | Feature Fehler   | Erfolgsquote        | Gesamtzeit (ms)
+| ${stats.total} | ${stats.passed} | ${stats.failed} | ${stats.fFails}  | ${stats.fErrors} | ${stats.successRate}| ${stats.time}
+|==================================================================================================================================
+
+=== Spezifikationen
+
+[options="header"]
+|===================================================================
+|Name  | Features | Fehlgeschlagen | Fehler | Ausgelassen | Erfolgsquote | Zeit
+<% data.each { name, map ->
+ %>| $name | ${map.stats.totalRuns} | ${map.stats.failures} | ${map.stats.errors} | ${map.stats.skipped} | ${map.stats.successRate} | ${map.stats.time}
+<% } %>
+|===================================================================
+
+
+<% data.each { name, map ->
+ %>
+<<<<
+
+include::${name}.ad[]
+<% } %>
+
+[small]#erstellt mit ${com.athaydes.spockframework.report.SpockReportExtension.PROJECT_URL}[Athaydes Spock Reports] und konvertiert mit asciidoc Geb Template#
