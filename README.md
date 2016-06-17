@@ -23,4 +23,4 @@ on the commandline. To use UTF-8 encoded characters in your test descriptions, m
 
 `$env:GRADLE_OPTS="-Dfile.encoding=UTF-8"`
 
-The included spock-reports template is available in english and german. Default config is set to german and can be changed in https://github.com/rdmueller/etka15/blob/master/src/test/resources/META-INF/services/com.athaydes.spockframework.report.IReportCreator.properties
+The included spock-reports template is available in english and german. Default config is set to german and can be changed in [src/test/resources/META-INF/services/com.athaydes.spockframework.report.IReportCreator.properties](https://github.com/rdmueller/etka15/blob/master/src/test/resources/META-INF/services/com.athaydes.spockframework.report.IReportCreator.properties)
