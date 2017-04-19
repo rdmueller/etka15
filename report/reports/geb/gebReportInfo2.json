@@ -1,6 +1,47 @@
 {
     "specs": [
         {
+            "label": "BasicTestsSpec",
+            "tests": [
+                {
+                    "num": "001",
+                    "label": "Access the session description",
+                    "reports": [
+                        {
+                            "time": 1492632880911,
+                            "num": "001",
+                            "label": "start page",
+                            "url": "http://rdmueller.github.io/etka15/",
+                            "files": [
+                                "./BasicTestsSpec/001-001-Access the session description-start page.html",
+                                "./BasicTestsSpec/001-001-Access the session description-start page.png"
+                            ]
+                        },
+                        {
+                            "time": 1492632882424,
+                            "num": "002",
+                            "label": "abstract of session",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./BasicTestsSpec/001-002-Access the session description-abstract of session.html",
+                                "./BasicTestsSpec/001-002-Access the session description-abstract of session.png"
+                            ]
+                        },
+                        {
+                            "time": 1492632883156,
+                            "num": "003",
+                            "label": "end",
+                            "url": "http://rdmueller.github.io/etka15/vortrag.html",
+                            "files": [
+                                "./BasicTestsSpec/001-003-Access the session description-end.html",
+                                "./BasicTestsSpec/001-003-Access the session description-end.png"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "label": "EntwicklertagSpec",
             "tests": [
                 {
@@ -8,7 +49,7 @@
                     "label": "Aufruf der Vortragsbeschreibung",
                     "reports": [
                         {
-                            "time": 1432021366729,
+                            "time": 1492632884464,
                             "num": "001",
                             "label": "Startseite",
                             "url": "http://rdmueller.github.io/etka15/",
@@ -18,7 +59,7 @@
                             ]
                         },
                         {
-                            "time": 1432021368069,
+                            "time": 1492632885526,
                             "num": "002",
                             "label": "Abstract des Vortrags",
                             "url": "http://rdmueller.github.io/etka15/vortrag.html",
@@ -28,7 +69,7 @@
                             ]
                         },
                         {
-                            "time": 1432021368519,
+                            "time": 1492632886261,
                             "num": "003",
                             "label": "end",
                             "url": "http://rdmueller.github.io/etka15/vortrag.html",
@@ -44,7 +85,7 @@
                     "label": "Ansicht der Referenten",
                     "reports": [
                         {
-                            "time": 1432021369879,
+                            "time": 1492632887632,
                             "num": "001",
                             "label": "Liste Referenten",
                             "url": "http://rdmueller.github.io/etka15/speaker.html",
@@ -54,13 +95,23 @@
                             ]
                         },
                         {
-                            "time": 1432021370415,
+                            "time": 1492632888907,
                             "num": "002",
-                            "label": "end",
-                            "url": "http://rdmueller.github.io/etka15/speaker.html",
+                            "label": "Startseite",
+                            "url": "http://rdmueller.github.io/etka15/index.html",
                             "files": [
-                                "./EntwicklertagSpec/002-002-Ansicht der Referenten-end.html",
-                                "./EntwicklertagSpec/002-002-Ansicht der Referenten-end.png"
+                                "./EntwicklertagSpec/002-002-Ansicht der Referenten-Startseite.html",
+                                "./EntwicklertagSpec/002-002-Ansicht der Referenten-Startseite.png"
+                            ]
+                        },
+                        {
+                            "time": 1492632889516,
+                            "num": "003",
+                            "label": "end",
+                            "url": "http://rdmueller.github.io/etka15/index.html",
+                            "files": [
+                                "./EntwicklertagSpec/002-003-Ansicht der Referenten-end.html",
+                                "./EntwicklertagSpec/002-003-Ansicht der Referenten-end.png"
                             ]
                         }
                     ]
@@ -70,7 +121,7 @@
                     "label": "Zurueck Link",
                     "reports": [
                         {
-                            "time": 1432021370936,
+                            "time": 1492632890231,
                             "num": "001",
                             "label": "Zusammenfassung des Vortrags",
                             "url": "http://rdmueller.github.io/etka15/vortrag.html",
@@ -80,7 +131,7 @@
                             ]
                         },
                         {
-                            "time": 1432021371573,
+                            "time": 1492632891113,
                             "num": "002",
                             "label": "Startseite",
                             "url": "http://rdmueller.github.io/etka15/index.html",
@@ -90,7 +141,7 @@
                             ]
                         },
                         {
-                            "time": 1432021371919,
+                            "time": 1492632891706,
                             "num": "003",
                             "label": "end",
                             "url": "http://rdmueller.github.io/etka15/index.html",

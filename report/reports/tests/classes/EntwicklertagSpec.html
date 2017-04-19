@@ -23,25 +23,25 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">3</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="ignored">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>ignored</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">10.965s</div>
+<div class="counter">7.939s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">66%</div>
+<div class="infoBox skipped" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,42 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard output</a>
-</li>
-<li>
-<a href="#tab3">Standard error</a>
+<a href="#tab1">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="Ansicht der Referenten"></a>
-<h3 class="failures">Ansicht der Referenten</h3>
-<span class="code">
-<pre>Condition not satisfied:
-
-headlines[1].text() == &quot;Ralf Müller&quot;
-|        |   |      |
-|        |   |      false
-|        |   |      3 differences (78% similarity)
-|        |   |      Ralf (D. )Müller
-|        |   |      Ralf (---)Müller
-|        |   Ralf D. Müller
-|        [[[[[ChromeDriver: chrome on WIN8 (80274430f3a77c6665700df93417961c)] -&gt; tag name: html]] -&gt; css selector: section#main_content h3]]
-headlines - SimplePageContent (owner: SpeakerPage, args: [], value: null)
-
-	at EntwicklertagSpec.Ansicht der Referenten(EntwicklertagSpec.groovy:29)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -107,78 +78,45 @@ headlines - SimplePageContent (owner: SpeakerPage, args: [], value: null)
 </tr>
 </thead>
 <tr>
-<td class="failures">Ansicht der Referenten</td>
-<td>1.856s</td>
-<td class="failures">failed</td>
+<td class="success">Ansicht der Referenten</td>
+<td>3.222s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Aufruf der Vortragsbeschreibung</td>
-<td>7.678s</td>
+<td>2.533s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Zurueck Link</td>
-<td>1.431s</td>
+<td>2.184s</td>
 <td class="success">passed</td>
+</tr>
+<tr>
+<td class="skipped">irgendwas anderes</td>
+<td>-</td>
+<td class="skipped">ignored</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>&gt;&gt;&gt; 001-001-Aufruf der Vortragsbeschreibung-Startseite
-001
-&gt;&gt;&gt; 001-001-Aufruf der Vortragsbeschreibung-Startseite
-001
-&gt;&gt;&gt; 001-002-Aufruf der Vortragsbeschreibung-Abstract des Vortrags
-002
-&gt;&gt;&gt; 001-002-Aufruf der Vortragsbeschreibung-Abstract des Vortrags
-002
-&gt;&gt;&gt; 001-003-Aufruf der Vortragsbeschreibung-end
-003
-&gt;&gt;&gt; 001-003-Aufruf der Vortragsbeschreibung-end
-003
-&gt;&gt;&gt; 002-001-Ansicht der Referenten-Liste Referenten
-001
-&gt;&gt;&gt; 002-001-Ansicht der Referenten-Liste Referenten
-001
-&gt;&gt;&gt; 002-002-Ansicht der Referenten-end
-002
-&gt;&gt;&gt; 002-002-Ansicht der Referenten-end
-002
-&gt;&gt;&gt; 003-001-Zurueck Link-Zusammenfassung des Vortrags
-001
-&gt;&gt;&gt; 003-001-Zurueck Link-Zusammenfassung des Vortrags
-001
-&gt;&gt;&gt; 003-002-Zurueck Link-Startseite
-002
-&gt;&gt;&gt; 003-002-Zurueck Link-Startseite
-002
-&gt;&gt;&gt; 003-003-Zurueck Link-end
-003
-&gt;&gt;&gt; 003-003-Zurueck Link-end
-003
-entering spec-template
+<pre>entering spec-template
 parsed gebReport
-[label:Aufruf der Vortragsbeschreibung, num:001, reports:[[files:[./EntwicklertagSpec/001-001-Aufruf der Vortragsbeschreibung-Startseite.html, ./EntwicklertagSpec/001-001-Aufruf der Vortragsbeschreibung-Startseite.png], label:Startseite, num:001, time:1432021366729, url:http://rdmueller.github.io/etka15/], [files:[./EntwicklertagSpec/001-002-Aufruf der Vortragsbeschreibung-Abstract des Vortrags.html, ./EntwicklertagSpec/001-002-Aufruf der Vortragsbeschreibung-Abstract des Vortrags.png], label:Abstract des Vortrags, num:002, time:1432021368069, url:http://rdmueller.github.io/etka15/vortrag.html], [files:[./EntwicklertagSpec/001-003-Aufruf der Vortragsbeschreibung-end.html, ./EntwicklertagSpec/001-003-Aufruf der Vortragsbeschreibung-end.png], label:end, num:003, time:1432021368519, url:http://rdmueller.github.io/etka15/vortrag.html]]]
-[label:Ansicht der Referenten, num:002, reports:[[files:[./EntwicklertagSpec/002-001-Ansicht der Referenten-Liste Referenten.html, ./EntwicklertagSpec/002-001-Ansicht der Referenten-Liste Referenten.png], label:Liste Referenten, num:001, time:1432021369879, url:http://rdmueller.github.io/etka15/speaker.html], [files:[./EntwicklertagSpec/002-002-Ansicht der Referenten-end.html, ./EntwicklertagSpec/002-002-Ansicht der Referenten-end.png], label:end, num:002, time:1432021370415, url:http://rdmueller.github.io/etka15/speaker.html]]]
-[label:Zurueck Link, num:003, reports:[[files:[./EntwicklertagSpec/003-001-Zurueck Link-Zusammenfassung des Vortrags.html, ./EntwicklertagSpec/003-001-Zurueck Link-Zusammenfassung des Vortrags.png], label:Zusammenfassung des Vortrags, num:001, time:1432021370936, url:http://rdmueller.github.io/etka15/vortrag.html], [files:[./EntwicklertagSpec/003-002-Zurueck Link-Startseite.html, ./EntwicklertagSpec/003-002-Zurueck Link-Startseite.png], label:Startseite, num:002, time:1432021371573, url:http://rdmueller.github.io/etka15/index.html], [files:[./EntwicklertagSpec/003-003-Zurueck Link-end.html, ./EntwicklertagSpec/003-003-Zurueck Link-end.png], label:end, num:003, time:1432021371919, url:http://rdmueller.github.io/etka15/index.html]]]
-entering summary-template
-</pre>
-</span>
-</div>
-<div id="tab3" class="tab">
-<h2>Standard error</h2>
-<span class="code">
-<pre>Starting ChromeDriver (v2.10.267521) on port 37110
-Only local connections are allowed.
 </pre>
 </span>
 </div>
 </div>
 <div id="footer">
-<p>Generated by 
-<a href="http://www.gradle.org">Gradle 2.2.1</a> at 19.05.2015 09:42:54</p>
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 2.11</a> at 19.04.2017 22:14:54</p>
 </div>
 </div>
 </body>
+</html>
