@@ -17,9 +17,7 @@ class FilmStripReportingListener implements ReportingListener {
 
     void onReport(Reporter reporter, ReportState reportState, List<File> reportFiles) {
         def out =  new File(reportState.browser.config.reportsDir.path, 'gebReportInfo.json')
-        println ">>> "+reportState.label
         def (testNum,reportNum,testLabel,reportLabel) = reportState.label.split('(?<!-)-(?!-)') // only split on single '-'
-        println reportNum
         //re-escape dashes
         testLabel   = testLabel.replaceAll('--','-')
         reportLabel = reportLabel.replaceAll('--','-')

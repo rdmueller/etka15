@@ -15,7 +15,6 @@ class EntwicklertagSpec extends GebReportingSpec {
         then: "sieht er die Zusammenfassung des Vortrags"
             report 'Abstract des Vortrags'
             at AbstractPage
-            report 'Abstract des Vortrags'
             headline ==~ /Vortrag/
 
     }

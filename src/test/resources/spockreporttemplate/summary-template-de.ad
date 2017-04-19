@@ -13,6 +13,7 @@ println "entering summary-template"
 :example-caption: Beispiel
 :figure-caption: Abbildung
 :table-caption: Tabelle
+:source-highlighter: coderay
 
 // numbering from here on
 :numbered:

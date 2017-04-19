@@ -2,6 +2,27 @@
 // uses the chrome driver to showcase Geb
 // uses Spock-Reports to generate AsciiDoc output and renders it as HTML
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+    }
+}
+plugins {
+    id "org.asciidoctor.convert" version "1.5.3"
+/**
+ uncomment this if you want to use the ruby versions of the plugins
+    // we need this plugin to add ruby gems
+    id "com.github.jruby-gradle.base" version "1.4.0"
+ /uncomment
+ **/
+    id "org.aim42.htmlSanityCheck" version "0.9.6"
+    id "com.github.ben-manes.versions" version "0.14.0"
+}
+dependencies {
+    asciidoctor 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.14'
+}
 import org.apache.tools.ant.taskdefs.condition.Os
 import groovy.json.JsonOutput
 
@@ -14,7 +35,7 @@ ext {
         groovyVersion = "2.4.8"
         gebVersion = "1.1.1"
         seleniumVersion = "3.1.0"
-        chromeDriverVersion = '2.26'
+        chromeDriverVersion = '2.29'
         phantomJsVersion = '2.1.1'
     }
 }
@@ -25,17 +46,10 @@ apply plugin: "groovy"
 apply plugin: "idea"
 description = "Spock Framework - Example Project"
 
-// Spock works with Java 1.5 and above
-sourceCompatibility = 1.5
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
-        classpath 'com.lookout:jruby-gradle-plugin:2.0.+'
-    }
+asciidoctorj {
+ version = '1.5.4'
 }
+
 task printProps << {
  //   println commandLineProjectProp
     println System.properties
@@ -48,6 +62,9 @@ repositories {
 
   //for spock-reports
   jcenter()
+   flatDir {
+       dirs 'libs'
+   }
 }
 
 configurations {
@@ -66,7 +83,7 @@ dependencies {
     testRuntime "org.objenesis:objenesis:2.1"    // allows mocking of classes without default constructor (together with CGLIB)
 
     //for spock-reports
-    testCompile( 'com.athaydes:spock-reports:1.2.13' ) {
+    testCompile( 'com.athaydes:spock-reports:1.3.0' ) {
         transitive = false // this avoids affecting your version of Groovy/Spock
     }
     testCompile 'org.slf4j:slf4j-api:1.7.13'

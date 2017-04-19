@@ -29,15 +29,55 @@ gebTestResults = gebReport.specs.find {it?.label==data.info.description.classNam
 %>
 ==== $name
 
+=====
+
 <% def gebArtefacts = gebTestResults?.find {it?.label==name}?.reports %>
 
 Resultat: **$result** [big]#<% if (result=="PASS") { %>icon:check-circle-o[role="green"]<% } else { %>icon:exclamation-triangle[role="red"]<% } %>#
 <%
-def translations = ['Given:':'Gegeben:','When:':'Wenn','And:':'und','Then:':'dann']
+        def translations = ['Given:':'Gegeben:','When:':'Wenn','And:':'und','Then:':'dann']
+        def num = 0
         for ( block in blocks ) {
  %>
 * **${translations[block.kind]?:block.kind}** ${block.text}
 <%
+//fetch screenshots
+    def numCols = 0
+    def screenshots = []
+    gebArtefacts.each {
+     def imageUrl = "../../reports/geb/"+it.files.find{it.endsWith('png')}
+     def pageUrl = "../../reports/geb/"+it.files.find{it.endsWith('html')}
+     imageUrl = imageUrl.replaceAll(' ','%20')
+     pageUrl  =  pageUrl.replaceAll(' ','%20')
+     //omit auto-generated end-screenshots
+     if (!(imageUrl.endsWith('-end.png'))) {
+     	numCols++
+        screenshots << """image:${imageUrl}[width="95%", link="${imageUrl}"]
+link:${pageUrl}[.]"""
+     }
+    }
+
+//output testcode along with screenshots
+    def needsScreenshot = false
+          if ( block.sourceCode ) {
+            out << "\n[cols=\"2,1\"]\n|====\n"
+            out << "\na|[source,groovy,linenums]\n----\n"
+            block.sourceCode.each { codeLine ->
+                out << codeLine
+                out << "\n"
+                if (codeLine ==~ /[\t ]*report.*/) {
+                    needsScreenshot = true
+                }
+            }
+            out << "----\n\n"
+            if (needsScreenshot) {
+                out << "a| " << screenshots[num++] <<"\n"
+            } else {
+                out << "| \n"
+            }
+            out << "|====\n"
+            
+          }
         }
         def executedIterations = iterations.findAll { it.dataValues || it.errors }
         if ( params && executedIterations && executedIterations.size() > 1 ) {
@@ -53,39 +93,7 @@ def translations = ['Given:':'Gegeben:','When:':'Wenn','And:':'und','Then:':'dan
 <%          }
 %>|====
 <%      }
-if (gebArtefacts) {
-%>
-[cols="a,a,a"]
-|====
-<%
-def numCols = 0
-    gebArtefacts.each {
-     def imageUrl = "../../reports/geb/"+it.files.find{it.endsWith('png')}
-     def pageUrl = "../../reports/geb/"+it.files.find{it.endsWith('html')}
-     imageUrl = imageUrl.replaceAll(' ','%20')
-     pageUrl  =  pageUrl.replaceAll(' ','%20')
-     //omit auto-generated end-screenshots
-     if (!(imageUrl.endsWith('-end.png'))) {
-     	numCols++
-%>| image::${imageUrl}[width="95%", link="${imageUrl}"]
-${it.label} link:${pageUrl}[.]
-<%
-     }
-     //every three image, create a new row
-     if (numCols%3==0) {
-%>
-<%
-     }
-    }
-    //fill remaining columns with empty elements
-    (3-numCols%3).times {
-%>|
-<%
-    }
-%>|====
 
-<%
-}
         def problems = executedIterations.findAll { it.errors }
         if ( problems ) {
             out << """
@@ -105,5 +113,9 @@ ${it.label} link:${pageUrl}[.]
 ====
 """
         }
+
+out << """
+=====
+"""        
     }
  %>
