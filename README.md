@@ -2,6 +2,8 @@
 
 ## Übersichtlich und nachvollziehbar Testen für alle!
 
+>>> This repository is a bit outdated. If you want to have screenshots included in your functional spock tests, take a look at https://github.com/AOEpeople/geb-spock-reports !
+
 Code zur Präsentation "Übersichtlich und nachvollziehbar Testen für alle!"
 
 Dieses Repository soll nochmal die in der Präsentation dargestellten Methoden und Vorgehensweisen anhand eines Gradle-Builds und einer trivialen Website (http://rdmueller.github.io/etka15/) verdeutlichen.
